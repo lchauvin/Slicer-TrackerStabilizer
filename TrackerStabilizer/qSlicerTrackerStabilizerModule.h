@@ -30,8 +30,15 @@ class Q_SLICER_QTMODULES_TRACKERSTABILIZER_EXPORT
 qSlicerTrackerStabilizerModule
   : public qSlicerLoadableModule
 {
+  // Migration VTK7-Qt4-to-VTK8-Qt5
+  // Q_OBJECT
+  // Q_INTERFACES(qSlicerLoadableModule);
+
   Q_OBJECT
-  Q_INTERFACES(qSlicerLoadableModule);
+  #ifdef Slicer_HAVE_QT5
+    Q_PLUGIN_METADATA(IID "org.slicer.modules.loadable.qSlicerLoadableModule/1.0");
+  #endif
+    Q_INTERFACES(qSlicerLoadableModule);
 
 public:
 
